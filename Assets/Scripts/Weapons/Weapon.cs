@@ -5,7 +5,6 @@ using UnityEngine;
 public class Weapon : MonoBehaviour, IInteractable
 {
 
-    UiManager uiManager;
     WeaponManager weaponManager;
     public string weaponName = "Weapon";
     public int maxAmmo = 30;
@@ -14,7 +13,7 @@ public class Weapon : MonoBehaviour, IInteractable
 
     public int damage = 5;
 
-    public int range = 10;
+    public int distance = 30;
 
     public float reloadTime = 2;
 
@@ -30,7 +29,6 @@ public class Weapon : MonoBehaviour, IInteractable
     // Start is called before the first frame update
     void Start()
     {
-        uiManager = UiManager.Instance;
         weaponManager = WeaponManager.Instance;
 
         SetParameters();
@@ -66,6 +64,8 @@ public class Weapon : MonoBehaviour, IInteractable
         {
             StopCoroutine(shootCoroutine);
         }
+
+        nextTimeToFire = 0;
     }
 
     public void HandleReload()
@@ -92,7 +92,7 @@ public class Weapon : MonoBehaviour, IInteractable
     IEnumerator ShootRoutine(Transform transform)
     {
         currentAmmo--;
-        if (TryRaycast(transform, range, out IDamageable damageable))
+        if (TryRaycast(transform, distance, out IDamageable damageable))
         {
             damageable.TakeDamage(damage);
         }

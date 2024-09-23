@@ -7,7 +7,7 @@ public class M1911Weapon : Weapon
         maxAmmo = 10;
         fireRate = 0.5f; // m/s
         damage = 5;
-        range = 5;
+        distance = 50;
         reloadTime = 2;
     }
 }

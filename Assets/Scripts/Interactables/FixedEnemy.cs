@@ -18,6 +18,7 @@ public class FixedEnemy : MonoBehaviour
             {
                 Destroy(gameObject);
             }
+            print(damageable.HealthPercentage);
             trackerCanvas.SetHealth(damageable.HealthPercentage);
         });
         

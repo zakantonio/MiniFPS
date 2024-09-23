@@ -12,7 +12,7 @@ public class EnemyDamageable : MonoBehaviour, IDamageable
 
     private float health;
 
-    int damage = 50;
+    int damage = 30;
 
     Animator animator;
     Action<IDamageable> onDamageCallback;
