@@ -38,11 +38,17 @@ public class BoxBehaviour : MonoBehaviour, IInteractable
     {
         animator = GetComponentInParent<Animator>();
 
+        EnableContent();
+    }
+    public void SetBoxContent(BoxContent content) {
+        this.content = content;
+    }
+    
+    void EnableContent() {
         foreach (Transform t in contentSpot.transform)
         {
             t.gameObject.SetActive(false);
         }
-
 
         switch (content)
         {
@@ -100,4 +106,5 @@ public class BoxBehaviour : MonoBehaviour, IInteractable
             }
         }
     }
+
 }
