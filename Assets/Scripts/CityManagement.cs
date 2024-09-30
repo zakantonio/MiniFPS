@@ -5,7 +5,7 @@ public class CityManagement : MonoBehaviour
 
     [SerializeField] BoxBehaviour[] chests;
 
-    [SerializeField] FixedEnemy enemies;
+    [SerializeField] FixedEnemy[] enemies;
 
     [SerializeField] CheckPoint checkPoint;
 
@@ -26,9 +26,6 @@ public class CityManagement : MonoBehaviour
     public void SetLevel(int level = 0)
     {
         this.level = level;
-
-        chests[0].SetBoxContent(BoxContent.Coin);
-        chests[1].SetBoxContent(BoxContent.Ammo);
 
         BoxContent c = BoxContent.M1911;
         switch (level)
@@ -60,7 +57,9 @@ public class CityManagement : MonoBehaviour
                 }
         }
 
-        chests[2].SetBoxContent(c);
+        chests[0].SetBoxContent(c);
+        chests[1].SetBoxContent(BoxContent.Ammo);
+        chests[2].SetBoxContent(BoxContent.Coin);
 
     }
 }

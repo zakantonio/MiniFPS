@@ -17,7 +17,7 @@ public enum BoxContent
 public class BoxBehaviour : MonoBehaviour, IInteractable
 {
 
-    [SerializeField] BoxContent content;
+    BoxContent content;
 
     [SerializeField] GameObject contentSpot;
 
@@ -40,11 +40,14 @@ public class BoxBehaviour : MonoBehaviour, IInteractable
 
         EnableContent();
     }
-    public void SetBoxContent(BoxContent content) {
+    public void SetBoxContent(BoxContent content)
+    {
         this.content = content;
+        EnableContent();
     }
-    
-    void EnableContent() {
+
+    void EnableContent()
+    {
         foreach (Transform t in contentSpot.transform)
         {
             t.gameObject.SetActive(false);
