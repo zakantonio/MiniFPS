@@ -11,12 +11,6 @@ public class CityManagement : MonoBehaviour
 
     int level = 0;
 
-    // Start is called before the first frame update
-    void Start()
-    {
-        SetLevel();
-    }
-
     // Update is called once per frame
     void Update()
     {
@@ -27,7 +21,7 @@ public class CityManagement : MonoBehaviour
     {
         this.level = level;
 
-        BoxContent c = BoxContent.M1911;
+        BoxContent c;
         switch (level)
         {
             case 0:
@@ -55,7 +49,17 @@ public class CityManagement : MonoBehaviour
                     c = BoxContent.Uzi;
                     break;
                 }
+            default:
+                {
+                    c = BoxContent.M1911;
+                    break;
+                }
+
+
         }
+
+        print(c.ToString());
+
 
         chests[0].SetBoxContent(c);
         chests[1].SetBoxContent(BoxContent.Ammo);

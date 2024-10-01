@@ -36,11 +36,17 @@ public class GameManager : Singleton<GameManager>
         {
             cities[i].SetLevel(i);
         }
+        // Nascondi il cursore del mouse
+        UnityEngine.Cursor.visible = false;
+
+        // Blocca il cursore al centro dello schermo
+        UnityEngine.Cursor.lockState = CursorLockMode.Locked;
     }
 
     public void AddCoin(int amount = 1)
     {
         coins += amount;
+        UiManager.Instance.SetCoins(coins);
     }
 
 }

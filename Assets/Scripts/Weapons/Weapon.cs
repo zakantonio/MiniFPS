@@ -26,6 +26,8 @@ public class Weapon : MonoBehaviour, IInteractable
     public bool isTaken = false;
     public bool isOnHand = false;
 
+    public GameObject bulletHitPrefab;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -124,7 +126,31 @@ public class Weapon : MonoBehaviour, IInteractable
 
     }
 
-    static bool TryRaycast(Transform transform, float distance, out IDamageable damageable)
+    IEnumerator ShowBulletHit(Vector3 point, Collider collider)
+    {
+        GameObject hit = Instantiate(bulletHitPrefab);
+        Vector3 hitPosition = point;
+        hit.transform.position = hitPosition;
+        hit.transform.LookAt(Player.Instance.transform);
+
+        hitPosition.x += Random.Range(-0.2f, 0.2f);
+        hitPosition.y += Random.Range(-0.2f, 0.2f);
+        hitPosition.z += Random.Range(-0.2f, 0.2f);
+
+        // Calcola la direzione verso il player
+        Vector3 directionToPlayer = (Player.Instance.transform.position - hitPosition).normalized;
+
+        // Distanza per spostare l'oggetto verso il player
+        float offsetDistance = 1.0f;  // Cambia questo valore per controllare quanto vicino al player spostare l'oggetto
+
+        // Sposta l'oggetto più vicino al player lungo la direzione calcolata
+        hit.transform.position += directionToPlayer * offsetDistance;
+
+        yield return new WaitForSeconds(0.5f);
+        Destroy(hit);
+    }
+
+    bool TryRaycast(Transform transform, float distance, out IDamageable damageable)
     {
         Ray ray = new Ray(transform.position, transform.forward);
 
@@ -132,6 +158,7 @@ public class Weapon : MonoBehaviour, IInteractable
         {
             if (hitInfo.collider.TryGetComponent(out IDamageable other))
             {
+                StartCoroutine(ShowBulletHit(hitInfo.point, hitInfo.collider));
                 damageable = other;
                 return true;
             }
@@ -139,6 +166,7 @@ public class Weapon : MonoBehaviour, IInteractable
         damageable = null;
         return false;
     }
+
 
     public string Prompt => isTaken ? "" : "Press ALT to get";
 

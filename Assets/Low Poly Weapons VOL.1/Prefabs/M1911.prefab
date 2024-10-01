@@ -248,10 +248,12 @@ MonoBehaviour:
   fireRate: 0.5
   currentAmmo: 0
   damage: 5
-  range: 10
+  distance: 30
   reloadTime: 2
   isTaken: 0
   isOnHand: 0
+  bulletHitPrefab: {fileID: 3995755987525719278, guid: e969d6150d18e498c9fdb42d6c43fb6c,
+    type: 3}
 --- !u!1 &1748277932983872
 GameObject:
   m_ObjectHideFlags: 0

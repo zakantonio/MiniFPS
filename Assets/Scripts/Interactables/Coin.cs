@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Coin : MonoBehaviour, IInteractable
 {
-    
+
 
     public string Prompt => "Press ALT to get";
 
@@ -22,7 +22,15 @@ public class Coin : MonoBehaviour, IInteractable
     // Update is called once per frame
     void Update()
     {
-       
+
+    }
+
+    void OnTriggerEnter(Collider other)
+    {
+        if (other.TryGetComponent(out Player player))
+        {
+            Interact();
+        }
     }
 
 

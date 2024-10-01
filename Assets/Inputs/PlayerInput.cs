@@ -201,7 +201,7 @@ public partial class @PlayerInput: IInputActionCollection2, IDisposable
                     ""id"": ""7bccf722-2b9d-4cee-892c-7e21d93ade1b"",
                     ""path"": ""<Mouse>/delta"",
                     ""interactions"": """",
-                    ""processors"": ""ScaleVector2(x=20,y=-20)"",
+                    ""processors"": ""ScaleVector2(x=40,y=-40)"",
                     ""groups"": """",
                     ""action"": ""LookAround"",
                     ""isComposite"": false,

@@ -36,9 +36,12 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
 
     public bool HasShield => currentShield > 0;
 
+    CameraShake cameraShake;
+
     void Start()
     {
         ResurrectLikeAJesus();
+        cameraShake = GetComponentInChildren<CameraShake>();
     }
 
     public void TakeDamage(int damage)
@@ -56,6 +59,8 @@ public class PlayerHealth : MonoBehaviour, IDamageable, IHealable
         {
             Player.Instance.OnDead();
         }
+
+        cameraShake.TriggerShake();
     }
 
     public void HandleHeal(int healAmount)

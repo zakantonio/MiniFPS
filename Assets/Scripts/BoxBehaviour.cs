@@ -105,6 +105,10 @@ public class BoxBehaviour : MonoBehaviour, IInteractable
             if (t.gameObject.TryGetComponent(out T content))
             {
                 content.gameObject.SetActive(true);
+                if (content.gameObject.TryGetComponent<Animator>(out Animator animator))
+                {
+                    animator.enabled = false;
+                }
 
             }
         }

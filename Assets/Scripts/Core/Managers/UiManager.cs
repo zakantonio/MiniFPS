@@ -13,6 +13,7 @@ public class UiManager : Singleton<UiManager>
     [SerializeField] TextMeshProUGUI weaponName;
     [SerializeField] TextMeshProUGUI bulletAmountTex;
     [SerializeField] TextMeshProUGUI isReloadingText;
+    [SerializeField] TextMeshProUGUI coinsText;
 
     public void SetPrompt(String prompt)
     {
@@ -41,5 +42,10 @@ public class UiManager : Singleton<UiManager>
     public void SetIsReloading(bool isReloading)
     {
         isReloadingText.text = isReloading ? "Reloading..." : "";
+    }
+
+    public void SetCoins(int coins)
+    {
+        coinsText.text = coins.ToString();
     }
 }

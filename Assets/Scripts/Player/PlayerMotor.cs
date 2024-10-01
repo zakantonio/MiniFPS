@@ -32,7 +32,7 @@ public class PlayerMotor : MonoBehaviour, IMovable
 
     public int StaminaMax => 100;
     public int SpeedNormal => 5;
-    public int SpeedSprint => 15;
+    public int SpeedSprint => 10;
 
     Vector3 playerVelocity = Vector3.zero;
     CharacterController controller;
